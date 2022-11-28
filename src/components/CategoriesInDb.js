@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Category from './Category'; //Componente que termina renderizando cada tarjeta
+import Category from './Category';
 
 
 function CategoriesInDb() {
@@ -22,11 +22,7 @@ function CategoriesInDb() {
     }
 
     function showCategories(data){
-        let listCategories=[];
-        for (const key in data.meta.countByCategory) {
-            listCategories.push(key);
-        }
-        setCategories(listCategories);
+        setCategories(data.meta.arrayCategories);
     }
 
 
