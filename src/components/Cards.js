@@ -33,19 +33,19 @@ function Cards(){
         color:   "primary",
         titulo: "Total products",
         valor: 0,
-        icono: "fas fa-film",
+        icono: "fas fa-gifts",
     });
     const [cardUsersInDataBase, setCardUsersInDataBase] = useState({
         color:   "success",
         titulo: "Total users",
         valor: 0,
-        icono: "fas fa-award",
+        icono: "fas fa-user",
     });
     const [cardCategoriesInDataBase, setCardCategoriesInDataBase] = useState({
         color:   "warning",
         titulo: "Total categories",
         valor: 0,
-        icono: "fas fa-user",
+        icono: "fas fa-book",
     });
 
     useEffect(() => {
@@ -75,13 +75,13 @@ function Cards(){
             color:   "primary",
             titulo: "Total products",
             valor: data.meta.total,
-            icono: "fas fa-film",
+            icono: "fas fa-gifts",
         });
         setCardCategoriesInDataBase({
             color:   "warning",
             titulo: "Total categories",
             valor: data.meta.totalCategories,
-            icono: "fas fa-user",
+            icono: "fas fa-book",
         })
     }
 
@@ -93,7 +93,7 @@ function Cards(){
             color:   "success",
             titulo: "Total users",
             valor: data.count,
-            icono: "fas fa-award",
+            icono: "fas fa-user",
         })
     }
 
