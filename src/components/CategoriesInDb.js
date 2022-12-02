@@ -4,7 +4,9 @@ import Category from './Category';
 
 function CategoriesInDb() {
 
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState({});
+    const [countByCat, setCountByCat] = useState([]);
 
     useEffect(() => {
         updateCategories();
@@ -22,7 +24,8 @@ function CategoriesInDb() {
     }
 
     function showCategories(data){
-        setCategories(data.meta.arrayCategories);
+        setCategories(data.meta.countByCategory);
+        setCountByCat(Object.values(data.meta.countByCategory))
     }
 
 
@@ -37,8 +40,8 @@ function CategoriesInDb() {
                     <div className="card-body">
                         <div className="row">
                             {
-                                categories.map((category, index) => {
-                                    return <Category  category = {category} key={index} />
+                                Object.keys(categories).map((category, index) => {
+                                    return <Category  category = {category} count = {countByCat[index]} key={index} />
                                 })
                             }
                         </div>
