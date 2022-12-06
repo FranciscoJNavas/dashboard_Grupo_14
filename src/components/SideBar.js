@@ -33,9 +33,9 @@ function SideBar() {
 
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link collapsed" to="/last">
+                    <Link className="nav-link collapsed" to="/filter">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Last</span>
+                        <span>Filter</span>
                     </Link>
                 </li>
 
