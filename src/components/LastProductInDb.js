@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 function LastProductInDb() {
 
@@ -38,7 +39,8 @@ function LastProductInDb() {
                         <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem' }} src={`http://localhost:3001/images/products/${lastProduct.image}`} alt=" Image last product " />
                     </div>
                     <p>{lastProduct.features}</p>
-                    <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View movie detail</a>
+                    {/* <Link className="btn btn-danger" target="_blank" rel="nofollow" to="/all">View product detail</Link> */}
+                    <Link className="btn btn-danger" to="/all">View product detail</Link>
                 </div>
             </div>
         </div>
