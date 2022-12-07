@@ -1,11 +1,13 @@
 import React from 'react';
-import Filter from './Filter';
 import SideBar from '../SideBar';
 import TopBar from '../TopBar';
 import Footer from '../Footer';
+import CardsOrders from '../cards/CardsOrders'
+import Order from '../orderPage/Order'
 
 
-function FilterPage() {
+
+function OrderPage() {
     return (
         <React.Fragment>
             <div id="wrapper">
@@ -14,7 +16,8 @@ function FilterPage() {
                     {/*<!-- Main Content -->*/}
                     <div id="content">
                         <TopBar />
-                        <Filter />
+                        <CardsOrders/>
+                        <Order />
                         <Footer />
                     </div>
                 </div>
@@ -23,4 +26,4 @@ function FilterPage() {
     );
 }
 
-export default FilterPage;
+export default OrderPage;

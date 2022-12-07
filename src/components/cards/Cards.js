@@ -66,11 +66,7 @@ function Cards(){
     }
 
     function showProductsAndCategories(data){
-        console.log("Por setear products y categories", data.meta.total , data.meta.totalCategories)
-        // setProductsValue(data.meta.total);
-        // setCategoriesValue(data.meta.totalCategories);
-        // cardProps[0].valor = productsValue;
-        // cardProps[2].valor = categoriesValue;
+        localStorage.setItem("total", JSON.stringify(data.meta.total));
         setCardProductsInDataBase({
             color:   "primary",
             titulo: "Total products",

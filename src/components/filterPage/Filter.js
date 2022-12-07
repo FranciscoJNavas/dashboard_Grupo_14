@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import OrderList from '../orderPage/OrderList';
-import ProductList from '../home/ProductList';
+import ProductList from '../productPage/ProductList';
 
 
 function Filter() {
 
     const fieldUser = document.getElementById("inputGroupSelect01");
     const fieldTable = document.getElementById("inputGroupSelect02");
-    const alertUser = document.getElementById("alert-user");
-    const alertTable = document.getElementById("alert-table");
 
     const [display, setDisplay] = useState("none");
     const [users, setUsers] = useState([]); //arreglo de usuarios
@@ -74,7 +72,7 @@ function Filter() {
                 <div className="col">
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
-                            <label className="input-group-text" for="inputGroupSelect01">Options</label>
+                            <label className="input-group-text" for="inputGroupSelect01">User</label>
                         </div>
                         <select className="custom-select" id="inputGroupSelect01">
                             <option selected>Choose...</option>
@@ -89,7 +87,7 @@ function Filter() {
                 <div className="col">
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
-                            <label className="input-group-text" for="inputGroupSelect02">Options</label>
+                            <label className="input-group-text" for="inputGroupSelect02">Table</label>
                         </div>
                         <select className="custom-select" id="inputGroupSelect02">
                             <option selected>Choose...</option>
