@@ -1,5 +1,5 @@
 import React from 'react';
-import Cards from './Cards';
+import Cards from '../cards/Cards';
 
 function ContentRowTop(){
     return (

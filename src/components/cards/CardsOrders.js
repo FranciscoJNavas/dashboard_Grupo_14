@@ -5,7 +5,7 @@ function CardsOrders(){
 
     const [cardTotalOrders, setCardTotalOrders] = useState({
         color:   "primary",
-        titulo: "Total orders $",
+        titulo: "Total $",
         valor: 0,
         icono: "fas fa-gifts",
     });
@@ -43,10 +43,13 @@ function CardsOrders(){
             0
         );
 
+        let totalF = new Intl.NumberFormat().format(total)
+        let average = new Intl.NumberFormat().format((total/data.meta.totalOrders).toFixed(1))
+
         setCardTotalOrders({
             color:   "primary",
-            titulo: "Total orders $",
-            valor: "$ " + total,
+            titulo: "Total $",
+            valor: "$ " + totalF,
             icono: "fas fa-search-dollar",
         });
         setCardOrdersInDataBase({
@@ -58,7 +61,7 @@ function CardsOrders(){
         setCardAverageOrder({
             color:   "warning",
             titulo: "Average Order",
-            valor: "$ " + (total/data.meta.totalOrders),
+            valor: "$ " + average,
             icono: "fas fa-ticket-alt",
         })
     }

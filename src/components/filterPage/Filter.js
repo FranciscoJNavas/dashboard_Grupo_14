@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import OrderList from './OrderList';
-import ProductList from './ProductList';
+import OrderList from '../orderPage/OrderList';
+import ProductList from '../home/ProductList';
 
 
 function Filter() {
