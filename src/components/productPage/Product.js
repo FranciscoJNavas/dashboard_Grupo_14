@@ -30,15 +30,16 @@ function Product(props) {
 
 	function showListProducts(data) {
 		setListProducts(data.data);
-		let pagesToShow = (props.allProducts.length / (Number(fieldRows.value)+1));
-		console.log(props.allProducts, "allProducts", pagesToShow)
-		let arrayPages = props.allProducts.filter((index) => index < pagesToShow);
-		console.log(arrayPages, "arrayPages")
-		setPages(arrayPages);
+		// let pagesToShow = (props.allProducts.length / (Number(fieldRows.value)+1));
+		// let arrayPages = props.allProducts.filter((index) => index < pagesToShow);
+		// setPages(arrayPages);
 	}
 
 	function updateRowsByLimit() {
 		console.log(fieldRows.value);
+		let pagesToShow = (props.allProducts.length / (Number(fieldRows.value)+1));
+		let arrayPages = props.allProducts.filter((index) => index < pagesToShow);
+		setPages(arrayPages);
 		updateListProducts(Number(fieldRows.value) + 1, 0)
 	}
 
@@ -49,10 +50,20 @@ function Product(props) {
 	}
 
 	function nextPage(){
-		if(pages.length<=5){
+		if(pages.length<=5 || pages[4]== props.allProducts.length-1){
 
 		}else{
 			let newPages = pages.map((page)=>(page+1))
+			setPages(newPages)
+			console.log(newPages);
+		}
+	}
+
+	function previousPage(){
+		if(pages.length<=5 || pages[0]== 0){
+
+		}else{
+			let newPages = pages.map((page)=>(page-1))
 			setPages(newPages)
 			console.log(newPages);
 		}
@@ -86,12 +97,12 @@ function Product(props) {
 				<div className="col">
 					<nav aria-label="...">
 						<ul class="pagination pagination-sm">
-							<li class="page-item"><button class="page-link">Previous</button></li>
+							<li class="page-item"><button onClick={() => previousPage()} class="page-link">Previous</button></li>
 							{
 								pages.map((page, index) => {
 									if(index<5){
 										return (
-											<li class="page-item"><button onClick={() => updateRowsByOffset(index)} class="page-link">{page + 1}</button></li>
+											<li class="page-item"><button onClick={() => updateRowsByOffset(page)} class="page-link">{page + 1}</button></li>
 										)
 									}
 								})
