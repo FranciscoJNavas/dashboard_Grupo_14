@@ -10,7 +10,7 @@ function Product(props) {
 		limit: 200,
 		offset: 0
 	})
-	const [pages, setPages] = useState(0);
+	const [pages, setPages] = useState([0]);
 
 	useEffect(() => {
 		updateListProducts(pagination.limit, pagination.offset);
@@ -30,20 +30,32 @@ function Product(props) {
 
 	function showListProducts(data) {
 		setListProducts(data.data);
-		let pagesToShow = Number(JSON.parse(localStorage.total)) / data.data.length;
-		console.log(pagesToShow,"pagesToShow")
-		setPages(pagesToShow);
+		let pagesToShow = (props.allProducts.length / (Number(fieldRows.value)+1));
+		console.log(props.allProducts, "allProducts", pagesToShow)
+		let arrayPages = props.allProducts.filter((index) => index < pagesToShow);
+		console.log(arrayPages, "arrayPages")
+		setPages(arrayPages);
 	}
 
-	function updateRowsByLimit(){
+	function updateRowsByLimit() {
 		console.log(fieldRows.value);
-		updateListProducts(Number(fieldRows.value)+1,0)
+		updateListProducts(Number(fieldRows.value) + 1, 0)
 	}
 
-	function updateRowsByOffset(offset){
-		let newOffset = offset*(Number(fieldRows.value)+1);
-		let newLimit = Number(fieldRows.value)+1;
-		updateListProducts(newLimit,newOffset)
+	function updateRowsByOffset(offset) {
+		let newOffset = offset * (Number(fieldRows.value) + 1);
+		let newLimit = Number(fieldRows.value) + 1;
+		updateListProducts(newLimit, newOffset)
+	}
+
+	function nextPage(){
+		if(pages.length<=5){
+
+		}else{
+			let newPages = pages.map((page)=>(page+1))
+			setPages(newPages)
+			console.log(newPages);
+		}
 	}
 
 	return (
@@ -74,15 +86,17 @@ function Product(props) {
 				<div className="col">
 					<nav aria-label="...">
 						<ul class="pagination pagination-sm">
+							<li class="page-item"><button class="page-link">Previous</button></li>
 							{
-								props.allProducts.map((product, index) => {
-									if (index < pages) {
+								pages.map((page, index) => {
+									if(index<5){
 										return (
-											<li class="page-item"><button onClick={() => updateRowsByOffset(index)} class="page-link">{index + 1}</button></li>
+											<li class="page-item"><button onClick={() => updateRowsByOffset(index)} class="page-link">{page + 1}</button></li>
 										)
 									}
 								})
 							}
+							<li class="page-item"><button onClick={() => nextPage()} class="page-link">Next</button></li>
 						</ul>
 					</nav>
 				</div>
